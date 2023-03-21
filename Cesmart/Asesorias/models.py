@@ -1,5 +1,5 @@
 from django.db import models
-
+# import hashlib
 
 # Create your models here.
 
@@ -21,6 +21,7 @@ class Asesoria(models.Model):
 class Docente(models.Model):
     Nombre = models.CharField(max_length=50)
     Correo = models.EmailField(primary_key=True)
+    Password = models.CharField(max_length=10)
 
     def __str__(self):
         return f"{self.Correo}"
@@ -47,6 +48,6 @@ class Alumno(models.Model):
     Nombre = models.CharField(max_length=50)
     Asesor = models.ForeignKey(Docente, on_delete=models.CASCADE)
     Carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
-
+    Password = models.CharField(max_length=10)
     def __str__(self):
         return f"0{self.Matricula}"

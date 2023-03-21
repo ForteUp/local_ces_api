@@ -5,5 +5,6 @@ from Asesorias.router import router
 
 urlpatterns = [
     path('academias/', Asesorias.views.verAcademias),
+    path('login/', Asesorias.views.Login),
     path('api/', include(router.urls))
 ]

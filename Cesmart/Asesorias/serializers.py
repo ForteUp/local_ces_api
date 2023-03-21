@@ -15,8 +15,8 @@ class SerializerDocente(serializers.ModelSerializer):
 
 
 class SerializerCarrera(serializers.ModelSerializer):
-    Academia = serializers.StringRelatedField()
-    Coordinador = serializers.StringRelatedField()
+    Academia = serializers.PrimaryKeyRelatedField(queryset=models.Academia.objects.all())
+    Coordinador = serializers.PrimaryKeyRelatedField(queryset=models.Docente.objects.all())
 
     class Meta:
         model = models.Carrera
@@ -24,10 +24,9 @@ class SerializerCarrera(serializers.ModelSerializer):
 
 
 class SerializerAlumno(serializers.ModelSerializer):
-    Asesor = SerializerDocente()
-    Carrera = SerializerCarrera()
+    Asesor = serializers.PrimaryKeyRelatedField(queryset=models.Docente.objects.all())
+    Carrera = serializers.PrimaryKeyRelatedField(queryset=models.Carrera.objects.all())
 
     class Meta:
         model = models.Alumno
         fields = '__all__'
-

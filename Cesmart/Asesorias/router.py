@@ -1,7 +1,9 @@
-from Asesorias.viewsets import AcademiaViewSet, AlumnoViewSet
+import Asesorias.viewsets as viewsets
 
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register('academias', AcademiaViewSet)
-router.register('alumnos', AlumnoViewSet)
+router.register('academias', viewsets.AcademiaViewSet)
+router.register('alumnos', viewsets.AlumnoViewSet)
+router.register('docentes', viewsets.DocenteViewset)
+router.register('carreras', viewsets.CarreraViewSet)

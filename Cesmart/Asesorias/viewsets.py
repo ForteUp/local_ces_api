@@ -20,7 +20,6 @@ class AlumnoViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.SerializerAlumno
     filter_backends = [DjangoFilterBackend]
     filterset_fields = '__all__'
-    # search_fields = ['Asesor', 'Carrera']
 
 
 class CarreraViewSet(viewsets.ModelViewSet):

@@ -3,16 +3,22 @@ from django.db import models
 
 # Create your models here.
 
+# Aqui se agregan los modelos
+
+
 class Asesoria(models.Model):
+    # Estas son las opciones posibles para el field Estado
     estados_asesoria = (
         ("AG", "AGENDADA"),
         ("CA", "CANCELADA"),
         ("RE", "REGISTRADA")
     )
-    Fecha = models.DateTimeField()
-    Lugar = models.CharField(max_length=50)
-    Tema = models.CharField(max_length=50)
-    Comentarios = models.TextField()
+    # Aqui agregamos los atributos del modelo, que son las columnas de la tabla
+    Fecha = models.DateTimeField() #Fecha y hora
+    Lugar = models.CharField(max_length=50) #Varchar de 50
+    Tema = models.CharField(max_length=50) #Varchar de 50
+    Comentarios = models.TextField() #Texto
+    # Estas son las llaves foraneas, hacen referencia a otros modelos, o en este caso tablas
     Alumno = models.ForeignKey("Alumno", on_delete=models.CASCADE)
     Asesor = models.ForeignKey("Docente", on_delete=models.CASCADE)
     Estado = models.CharField(max_length=2, choices=estados_asesoria, default="AG")
@@ -20,9 +26,11 @@ class Asesoria(models.Model):
 
 class Docente(models.Model):
     Nombre = models.CharField(max_length=50)
+    #Aqui correo se define como una superclave
     Correo = models.EmailField(primary_key=True)
     Password = models.CharField(max_length=10)
 
+    # Esta es la representacion del modelo
     def __str__(self):
         return f"{self.Correo}"
 

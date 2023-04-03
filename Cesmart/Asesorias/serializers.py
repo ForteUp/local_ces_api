@@ -1,10 +1,12 @@
 from rest_framework import serializers
 import Asesorias.models as models
 
-
+# El serializer convierte de modelo a json
 class SerializerAcademia(serializers.ModelSerializer):
     class Meta:
+        # Aqui se le indica el modelo
         model = models.Academia
+        # Aqui se escogen los atributos a serializar
         fields = '__all__'
 
 
@@ -15,6 +17,7 @@ class SerializerDocente(serializers.ModelSerializer):
 
 
 class SerializerCarrera(serializers.ModelSerializer):
+    # Cuando tenemos llaves foraneas usamos los primary related fields que se serializan el json
     Academia = serializers.PrimaryKeyRelatedField(queryset=models.Academia.objects.all())
     Coordinador = serializers.PrimaryKeyRelatedField(queryset=models.Docente.objects.all())
 

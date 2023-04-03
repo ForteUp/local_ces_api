@@ -21,11 +21,12 @@ def verAcademias(request):
     queryset = models.Alumno.objects.all()
     return Response(serializers.SerializerAlumno(queryset, many=True).data)
 
+
 @api_view(['POST'])
 def Login(request):
     correo = request.data['Correo']
     password = request.data['Password']
-    print(correo,password)
+    print(correo, password)
     try:
         query = models.Alumno.objects.get(Matricula=correo)
         print(query.Password)
